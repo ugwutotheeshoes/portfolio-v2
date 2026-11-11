@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>180 Autos — case study — Emmanuel Ugwu</title>
+    <meta
+      name="description"
+      content="180 Autos: website and inventory admin for a premium car dealership, with a pixel-art car that drives off as you scroll."
+    />
+    <meta property="og:image" content="../assets/og-image.png" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script>
+      (function () {
+        var t;
+        try {
+          t = localStorage.getItem("theme");
+        } catch (e) {}
+        if (!t)
+          t =
+            window.matchMedia &&
+            matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <style>
+      :root {
+        --go: #7dc142;
+      }
+      .au-title {
+        font-family: var(--font);
+        font-weight: 800;
+        font-size: 96px;
+        line-height: 0.9;
+        letter-spacing: -0.045em;
+      }
+      .au-title b {
+        font-weight: 800;
+        color: var(--go);
+      }
+      .spec {
+        border-top: 2px solid var(--strong);
+      }
+      .spec > div {
+        display: grid;
+        grid-template-columns: 170px minmax(0, 1fr);
+        gap: 6px 24px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .spec .k {
+        font-family: var(--mono);
+        font-size: 12px;
+        line-height: 22px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--strong);
+      }
+      .spec .v {
+        color: var(--text);
+      }
+      .spec .v b {
+        color: var(--strong);
+        font-weight: 600;
+      }
+      .plate {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border: 2px solid var(--strong);
+        border-radius: 6px;
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        color: var(--strong);
+      }
+      .plate i {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--go);
+      }
+      @media (max-width: 760px) {
+        .au-title {
+          font-family: var(--font);
+          font-weight: 800;
+          font-size: 96px;
+          line-height: 0.9;
+          letter-spacing: -0.045em;
+        }
+        .spec > div {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      .cover--180 .word {
+        font-family: var(--font);
+        font-weight: 800;
+        font-size: 15cqw;
+        letter-spacing: -0.05em;
+        line-height: 0.9;
+      }
+      .cover--180 .word b {
+        font-weight: 800;
+      }
+      .sw-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .sw {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .sw i {
+        display: block;
+        height: 84px;
+        border-radius: 20px;
+        border: 1px solid var(--rule);
+      }
+      .sw b {
+        color: var(--strong);
+        font-weight: 600;
+        font-size: 13px;
+      }
+      .sw span {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .bits {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .bit {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .bit .stage {
+        position: relative;
+        display: grid;
+        place-items: center;
+        aspect-ratio: 4 / 3;
+        border-radius: 20px;
+        background: #eef0ec;
+        overflow: hidden;
+      }
+      .bit .stage.dark {
+        background: #0a0a0a;
+      }
+      .bit b {
+        color: var(--strong);
+        font-weight: 600;
+      }
+      .bit > span {
+        font-size: 13px;
+        line-height: 20px;
+      }
+      .pill {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 8px 8px 16px;
+        border-radius: 999px;
+        background: #0a0a0a;
+        color: #eef0ec;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.6);
+      }
+      .pill .go {
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: #7dc142;
+        color: #0a0a0a;
+        font-weight: 700;
+      }
+      .card-demo {
+        width: 58%;
+        aspect-ratio: 4 / 3;
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 8px 20px -14px rgba(0, 0, 0, 0.4);
+        transition:
+          transform 0.35s var(--ease),
+          box-shadow 0.35s ease;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .card-demo i {
+        flex: 1;
+        background: #0a0a0a;
+      }
+      .card-demo span {
+        padding: 8px 10px;
+        font-size: 10px;
+        color: #0a0a0a;
+        display: flex;
+        justify-content: space-between;
+      }
+      .card-demo span b {
+        color: #4f8f1f;
+      }
+      .bit:hover .card-demo {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 30px -16px rgba(0, 0, 0, 0.5);
+      }
+      .road-demo {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 34%;
+        transform: translateY(-50%);
+        background: #1d1f1f;
+        border-top: 5px solid;
+        border-image: repeating-linear-gradient(
+            90deg,
+            #7dc142 0 16px,
+            #0a0a0a 16px 32px
+          )
+          5;
+      }
+      .road-demo::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 4px;
+        background: repeating-linear-gradient(
+          90deg,
+          #eef0ec 0 30px,
+          transparent 30px 58px
+        );
+        animation: rd180 0.55s linear infinite;
+      }
+      @keyframes rd180 {
+        to {
+          background-position: -58px 0;
+        }
+      }
+      .alt {
+        position: absolute;
+        inset: 14% 18%;
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .alt i:nth-child(odd) {
+        background: #eef0ec;
+        border: 1px solid #c9cdca;
+      }
+      .alt i:nth-child(even) {
+        background: #0a0a0a;
+      }
+      @media (max-width: 760px) {
+        .sw-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .bits {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wide cs-head">
+      <a class="back" href="../work.html"
+        ><span class="barw" aria-hidden="true">←</span>all work</a
+      >
+      <div class="right">
+        <span class="pbadge" role="img" aria-label="Case study">
+          <svg class="ring" viewBox="0 0 84 84" aria-hidden="true">
+            <defs>
+              <path
+                id="csRing"
+                d="M42,42 m-31,0 a31,31 0 1,1 62,0 a31,31 0 1,1 -62,0"
+              ></path>
+            </defs>
+            <text>
+              <textPath href="#csRing" textLength="192" lengthAdjust="spacing">
+                CASE STUDY · CASE STUDY ·
+              </textPath>
+            </text>
+          </svg>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 21H5V3h8l4 4v4"></path>
+            <path d="M13 3v4h4"></path>
+            <path d="M8 10h5M8 13.5h3"></path>
+            <circle cx="16.5" cy="16.5" r="3.2"></circle>
+            <path d="M18.8 18.8L21.5 21.5"></path>
+          </svg>
+        </span>
+        <button class="theme" type="button" aria-label="Switch to dark mode">
+          <svg
+            class="moon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"
+            ></path>
+            <path d="M17 3.5v2.4M15.8 4.7h2.4" stroke-width="1.4"></path>
+          </svg>
+          <svg
+            class="sun"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <g class="rays">
+              <path
+                d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"
+              ></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="cs">
+      <section
+        class="wide appear"
+        style="display: flex; flex-direction: column; gap: 20px"
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 24px;
+            flex-wrap: wrap;
+          "
+        >
+          <h1 class="au-title"><b>180</b> Autos</h1>
+          <span class="plate"><i aria-hidden="true"></i>ABUJA · 2025</span>
+        </div>
+        <p
+          style="
+            max-width: 620px;
+            font-size: 18px;
+            line-height: 28px;
+            color: var(--strong);
+          "
+        >
+          A website and inventory admin for a car dealership in Abuja. Visitors
+          browse cars, open each one, book test drives and ask for trade-in
+          appraisals.
+        </p>
+      </section>
+
+      <figure class="wide">
+        <div class="frame">
+          <img src="../assets/img/180-home.jpg" alt="The 180 Autos homepage" />
+        </div>
+        <figcaption class="capline"><span>the homepage</span></figcaption>
+      </figure>
+
+      <section
+        class="wide duo"
+        style="
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+          gap: 48px;
+        "
+      >
+        <div>
+          <span class="kicker">the spec sheet</span>
+          <h2 style="margin-top: 8px">180 Autos.</h2>
+          <p>Every dealership site lists specs, so this case study does too.</p>
+          <p style="margin-top: 14px">
+            <a
+              class="sitel"
+              href="https://180autos.netlify.app/"
+              target="_blank"
+              rel="noopener"
+              >Take it for a test drive<span class="a" aria-hidden="true"
+                >↗</span
+              ></a
+            >
+          </p>
+        </div>
+        <div class="spec">
+          <div>
+            <span class="k">Model</span
+            ><span class="v"><b>180 Autos</b> — website + inventory admin</span>
+          </div>
+          <div>
+            <span class="k">Role</span
+            ><span class="v">Design &amp; full-stack, solo</span>
+          </div>
+          <div>
+            <span class="k">Stack</span
+            ><span class="v"
+              ><span class="tools tools--plain"
+                ><span>React</span><span>TypeScript</span
+                ><span>React Router</span><span>Vite</span
+                ><span>Tailwind CSS</span><span>MongoDB</span
+                ><span>Cloudinary</span><span>EmailJS</span></span
+              ></span
+            >
+          </div>
+          <div>
+            <span class="k">Bodywork</span
+            ><span class="v"
+              >React and TypeScript, styled with Tailwind CSS</span
+            >
+          </div>
+          <div>
+            <span class="k">Paint</span
+            ><span class="v"
+              >Signal green from the logo, black, paper; <b>Bebas Neue</b> for
+              display, <b>Albert Sans</b> for text</span
+            >
+          </div>
+          <div>
+            <span class="k">Interior</span
+            ><span class="v"
+              >Search, filter by make, price, year and mileage, sort, and a full
+              page for every car</span
+            >
+          </div>
+          <div>
+            <span class="k">Extras</span
+            ><span class="v"
+              >Test-drive, trade-in and contact forms, prefilled from the car
+              you came from</span
+            >
+          </div>
+          <div>
+            <span class="k">Service</span
+            ><span class="v"
+              >An admin where the team adds cars, uploads and reorders photos,
+              and manages accounts</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="wide">
+        <span class="kicker">type</span>
+        <h2 style="margin-top: 8px">Font Family</h2>
+        <p style="max-width: 620px">
+          A tall, condensed display face for the headlines, a clean sans for
+          everything you read, and one pixel font saved for the footer.
+        </p>
+        <figure style="margin-top: 18px">
+          <div class="frame">
+            <img
+              src="../assets/img/180/type.jpg"
+              alt="Type specimen: Bebas Neue, Albert Sans and Press Start 2P"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="capline"><span>type specimen</span></figcaption>
+        </figure>
+        <div class="trio" style="margin-top: 22px">
+          <div class="stat" style="border-top-color: var(--rule)">
+            <b style="font-size: 18px; line-height: 24px">Bebas Neue</b
+            ><span
+              >display — headlines, prices, section titles. Always
+              uppercase.</span
+            >
+          </div>
+          <div class="stat" style="border-top-color: var(--rule)">
+            <b style="font-size: 18px; line-height: 24px">Albert Sans</b
+            ><span>text — specs, forms and everything you read.</span>
+          </div>
+          <div class="stat" style="border-top-color: var(--rule)">
+            <b style="font-size: 18px; line-height: 24px">Press Start 2P</b
+            ><span>pixel — only in the footer, to match the car.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="wide">
+        <span class="kicker">colour</span>
+        <h2 style="margin-top: 8px">Green means go</h2>
+        <p style="max-width: 620px">
+          The signal green comes straight from the logo, and it’s kept for
+          actions like booking a test drive, viewing inventory. Everything else
+          is ink, paper and a few greys, like tarmac and road paint.
+        </p>
+        <div class="sw-grid" style="margin-top: 18px">
+          <div class="sw">
+            <i style="background: #7dc142"></i><b>Signal green</b
+            ><span>#7DC142</span>
+          </div>
+          <div class="sw">
+            <i style="background: #4f8f1f"></i><b>Green deep</b
+            ><span>#4F8F1F</span>
+          </div>
+          <div class="sw">
+            <i style="background: #0a0a0a"></i><b>Ink</b><span>#0A0A0A</span>
+          </div>
+          <div class="sw">
+            <i style="background: #1d1f1f"></i><b>Tarmac</b><span>#1D1F1F</span>
+          </div>
+          <div class="sw">
+            <i style="background: #eef0ec"></i><b>Paper</b><span>#EEF0EC</span>
+          </div>
+          <div class="sw">
+            <i style="background: #c9cdca"></i><b>Mist light</b
+            ><span>#C9CDCA</span>
+          </div>
+          <div class="sw">
+            <i style="background: #8b9190"></i><b>Mist</b><span>#8B9190</span>
+          </div>
+          <div class="sw">
+            <i style="background: #5c6160"></i><b>Mist deep</b
+            ><span>#5C6160</span>
+          </div>
+          <div class="sw">
+            <i style="background: #ffffff"></i><b>White</b><span>#FFFFFF</span>
+          </div>
+          <div class="sw">
+            <i style="background: #d8434b"></i><b>Danger</b><span>#D8434B</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="wide">
+        <span class="kicker">details</span>
+        <h2 style="margin-top: 8px">The little things</h2>
+        <div class="bits" style="margin-top: 18px">
+          <div class="bit">
+            <span class="stage dark"
+              ><img
+                src="../assets/img/180/app-icon.png"
+                alt=""
+                style="width: 38%; border-radius: 22%" /></span
+            ><b>Pixel “180”</b
+            ><span
+              >The favicon and app icons are drawn in pixels, with a dashed road
+              underneath.</span
+            >
+          </div>
+          <div class="bit">
+            <span class="stage"
+              ><span class="pill" aria-hidden="true"
+                >Inventory<span style="opacity: 0.6">Test drive</span
+                ><span class="go">Book</span></span
+              ></span
+            ><b>Floating pill nav</b
+            ><span>The navigation floats as a black pill.</span>
+          </div>
+          <div class="bit">
+            <span class="stage"
+              ><span class="card-demo" aria-hidden="true"
+                ><i></i><span>Mercedes-Benz<b>₦</b></span></span
+              ></span
+            ><b>Cards that lift</b
+            ><span
+              >20px corners everywhere; car cards rise a little when you
+              hover.</span
+            >
+          </div>
+          <div class="bit">
+            <span class="stage dark"
+              ><span class="road-demo" aria-hidden="true"></span></span
+            ><b>The road</b
+            ><span
+              >Green-and-black kerbs and moving lane markings run under the hero
+              car.</span
+            >
+          </div>
+          <div class="bit">
+            <span class="stage"
+              ><span class="alt" aria-hidden="true"
+                ><i></i><i></i><i></i><i></i></span></span
+            ><b>Light, dark, light</b
+            ><span
+              >Sections alternate between paper and ink, so a long page reads
+              like driving through day and night.</span
+            >
+          </div>
+          <div class="bit">
+            <span class="stage" style="background: #0a0a0a; color: #7dc142"
+              ><span
+                class="mono"
+                style="font-size: 13px; letter-spacing: 0.12em"
+                >SCROLL TO DRIVE ↓</span
+              ></span
+            ><b>Scroll to drive</b
+            ><span
+              >A small hint on the hero tells you what scrolling will do.</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="col">
+        <div class="fact" style="margin-top: 22px">
+          <span class="k"
+            ><span class="square" aria-hidden="true"></span>fun fact</span
+          >
+          <p>
+            The pixel theme goes all the way down: the favicon is a tiny pixel
+            “180”, and the footer is set in Press Start 2P, an 8-bit arcade
+            font.
+          </p>
+        </div>
+      </section>
+
+      <a class="wide nextp" href="izu-igbo-calendar.html">
+        <span style="display: flex; flex-direction: column; gap: 8px"
+          ><span class="kicker">next project</span
+          ><span class="name"
+            >Izu Igbo Calendar<svg
+              class="arw"
+              width="26"
+              height="26"
+              viewBox="0 0 14 14"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2 7h10M8 3l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+              ></path></svg></span
+        ></span>
+        <span class="thumb"
+          ><img src="../assets/img/izu-web.jpg" alt="" loading="lazy"
+        /></span>
+      </a>
+    </main>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

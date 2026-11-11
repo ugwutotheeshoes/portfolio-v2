@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faber Reach — case study — Emmanuel Ugwu</title>
+<meta name="description" content="Faber Reach (in progress): give it a website and it finds the buyers, the decision-maker and drafts the email for you to approve.">
+<meta property="og:image" content="../assets/og-image.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../css/styles.css">
+<script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})();</script>
+<style>
+  .note-page { position: relative; padding: 40px 44px; border: 1px solid var(--rule); border-radius: 6px; background-color: var(--page); background-image: repeating-linear-gradient(to bottom, transparent 0 31px, var(--rule) 31px 32px); }
+  .note-page::before { content: ""; position: absolute; top: 0; bottom: 0; left: 26px; width: 1px; background: color-mix(in srgb, var(--accent) 40%, transparent); }
+  .status { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--strong); font-family: var(--mono); font-size: 11.5px; color: var(--strong); }
+  .status i { width: 8px; height: 8px; border-radius: 50%; background: #E0A526; animation: blink 1.6s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .3; } }
+  .chain { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .chain span { padding: 10px 14px; border: 1px solid var(--strong); border-radius: 8px; background: var(--page); color: var(--strong); font-size: 14px; }
+  .chain span.you { background: var(--strong); color: var(--page); }
+  .chain em { font-style: normal; color: var(--accent); font-family: var(--mono); }
+  .log { font-family: var(--mono); font-size: 12.5px; line-height: 32px; color: var(--strong); }
+  .log s { color: var(--muted); }
+  @media (max-width: 560px) { .note-page { padding: 28px 24px 28px 40px; } }
+</style>
+</head>
+<body>
+
+<header class="wide cs-head">
+  <a class="back" href="../work.html"><span class="barw" aria-hidden="true">←</span>all work</a>
+  <div class="right">
+    <span class="pbadge" role="img" aria-label="Case study">
+      <svg class="ring" viewBox="0 0 84 84" aria-hidden="true"><defs><path id="csRing" d="M42,42 m-31,0 a31,31 0 1,1 62,0 a31,31 0 1,1 -62,0"></path></defs><text><textPath href="#csRing" textLength="192" lengthAdjust="spacing">CASE STUDY · CASE STUDY · </textPath></text></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21H5V3h8l4 4v4"></path><path d="M13 3v4h4"></path><path d="M8 10h5M8 13.5h3"></path><circle cx="16.5" cy="16.5" r="3.2"></circle><path d="M18.8 18.8L21.5 21.5"></path></svg>
+    </span>
+    <button class="theme" type="button" aria-label="Switch to dark mode">
+      <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"></path><path d="M17 3.5v2.4M15.8 4.7h2.4" stroke-width="1.4"></path></svg>
+      <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><g class="rays"><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></g></svg>
+    </button>
+  </div>
+</header>
+
+<main class="cs">
+
+  <section class="col appear" style="display:flex;flex-direction:column;gap:20px">
+    <span class="status" style="text-transform:uppercase;letter-spacing:.06em;"><i aria-hidden="true"></i>work in progress · 2026</span>
+    <h1 style="font-size:56px;line-height:58px;font-weight:600;letter-spacing:-0.035em">Faber Reach</h1>
+    <p style="font-size:18px;line-height:28px;color:var(--strong);margin:0">Outreach that does the homework first. Give it a website, and it works out who that business sells to, finds companies that look like they need it, and drafts an email to the right person — for you to approve.</p>
+    <div class="stack-row"><span class="k">stack</span><div class="tools tools--plain"><span>Next.js</span><span>Supabase</span><span>Claude API</span></div></div>
+  </section>
+
+  <section class="wide">
+    <span class="kicker">the idea, end to end</span>
+    <h2 style="margin-top:8px">From a URL to a reply-worthy email</h2>
+    <div class="chain" style="margin-top:14px">
+      <span>your website</span><em>→</em><span>who buys from you</span><em>→</em><span>companies that need it</span><em>→</em><span>the decision-maker</span><em>→</em><span>a personal draft</span><em>→</em><span class="you">you approve</span>
+    </div>
+  </section>
+
+  <section class="col">
+    <div class="note-page">
+      <span class="kicker">lab notes</span>
+      <h2 style="margin:8px 0 6px">Where it stands</h2>
+      <div class="log">
+        <div><s>sketch the pipeline</s></div>
+        <div><s>first drafts that sound like a person</s></div>
+        <!-- TODO: update these as the build moves -->
+        <div>[what you’re working on now]</div>
+        <div>[what ships next]</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="col">
+    <div class="fact">
+      <span class="k"><span class="square" aria-hidden="true"></span>a rule it won’t break</span>
+      <p>Nothing sends on its own. Every email waits for a human to read it and press approve.</p>
+    </div>
+  </section>
+
+  <a class="wide nextp" href="sevanis.html">
+    <span style="display:flex;flex-direction:column;gap:8px"><span class="kicker">next project</span><span class="name">Sevanis<svg class="arw" width="26" height="26" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"></path></svg></span></span>
+    <span class="thumb"><img src="../assets/img/sevanis.jpg" alt="" loading="lazy"></span>
+  </a>
+</main>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

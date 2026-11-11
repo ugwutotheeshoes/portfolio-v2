@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kwuo — case study — Emmanuel Ugwu</title>
+    <meta
+      name="description"
+      content="Kwuo: interactive games for learning Igbo, with tutors and chat on the way."
+    />
+    <meta property="og:image" content="../assets/og-image.png" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script>
+      (function () {
+        var t;
+        try {
+          t = localStorage.getItem("theme");
+        } catch (e) {}
+        if (!t)
+          t =
+            window.matchMedia &&
+            matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <style>
+      .kw-band {
+        width: 100%;
+        background: #f5a30b;
+        color: #121110;
+        padding: 64px 0 0;
+        overflow: hidden;
+      }
+      .kw-band .inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+        align-items: end;
+        gap: 24px;
+      }
+      .kw-word {
+        margin: 0;
+        font-family: var(--font); letter-spacing: -0.03em;
+        font-weight: 900;
+        font-size: 200px;
+        line-height: 0.82;
+        text-transform: uppercase;
+        color: #121110;
+      }
+      .kw-band p {
+        color: #121110;
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: 500;
+        max-width: 440px;
+        margin: 20px 0 48px;
+      }
+      .kw-band img {
+        justify-self: center;
+        height: 380px;
+        width: auto;
+      }
+      .games {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .game {
+        position: relative;
+        overflow: hidden;
+        padding: 22px;
+        border-radius: 18px;
+        background: #121110;
+        color: #fff9e6;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 180px;
+        transition: transform 0.35s var(--ease);
+      }
+      html[data-theme="dark"] .game {
+        box-shadow: inset 0 0 0 1px #2a2826;
+      }
+      .game:hover {
+        transform: translateY(-4px) rotate(-0.6deg);
+      }
+      .game .gname {
+        font-family: var(--font); letter-spacing: -0.03em;
+        font-weight: 900;
+        font-size: 40px;
+        line-height: 0.95;
+        text-transform: uppercase;
+        color: inherit;
+      }
+      .game span:last-child {
+        color: inherit;
+        opacity: 0.88;
+        font-size: 14px;
+        line-height: 21px;
+      }
+      .soon {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .soon span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border: 1px dashed var(--strong);
+        border-radius: 999px;
+        color: var(--strong);
+        font-size: 13px;
+      }
+      .soon em {
+        font-style: normal;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .soon span::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #f5a30b;
+        box-shadow: inset 0 0 0 2px #121110;
+      }
+      .facts3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .side {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        border-right: 2px solid #f5a30b;
+        padding-right: 28px;
+      }
+      @media (max-width: 760px) {
+        .side {
+          border-right: 0;
+          padding-right: 0;
+          border-bottom: 2px solid #f5a30b;
+          padding-bottom: 20px;
+        }
+      }
+      .side .tools {
+        font-family: var(--font);
+        font-size: 14px;
+        line-height: 22px;
+        color: var(--strong);
+      }
+      .side .tools span:not(:last-child)::after {
+        width: 3px;
+        height: 3px;
+        margin: 0 10px;
+        opacity: 1;
+        background: var(--strong);
+      }
+      .side .k {
+        font-family: var(--mono);
+        font-size: 11.5px;
+        color: var(--accent);
+      }
+      .side .v {
+        color: var(--strong);
+      }
+      .spec-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 22px;
+        padding: 26px;
+        border-radius: 18px;
+        border: 1px solid var(--rule);
+        background: var(--page);
+      }
+      .spec-card .big {
+        font-family: "Big Shoulders Display", Impact, sans-serif;
+        font-weight: 900;
+        font-size: 92px;
+        line-height: 0.85;
+        text-transform: uppercase;
+        color: var(--strong);
+      }
+      .spec-card .glyphs {
+        font-family: "Big Shoulders Display", Impact, sans-serif;
+        font-weight: 800;
+        font-size: 34px;
+        letter-spacing: 0.04em;
+        color: var(--strong);
+      }
+      .spec-card .body {
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 22px;
+        line-height: 30px;
+        color: var(--strong);
+      }
+      .spec-card .weights {
+        display: flex;
+        gap: 18px;
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 18px;
+        color: var(--strong);
+      }
+      .sw-row {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .sw-row.four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+      .sw {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .sw i {
+        display: block;
+        height: 84px;
+        border-radius: 14px;
+        border: 1px solid var(--rule);
+      }
+      .sw b {
+        color: var(--strong);
+        font-weight: 600;
+        font-size: 13px;
+      }
+      .sw span {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .note-q {
+        margin-top: 18px;
+        padding: 14px 18px;
+        border-left: 3px solid #f5a30b;
+        background: color-mix(in srgb, #f5a30b 8%, transparent);
+        color: var(--strong);
+        font-size: 14px;
+      }
+      .note-q code {
+        font-family: var(--mono);
+        font-size: 12px;
+      }
+      .els {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .el {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .el .tile {
+        display: grid;
+        place-items: center;
+        aspect-ratio: 4 / 3;
+        border-radius: 22px;
+        background: #fff9e6;
+        border: 1px solid #fce2ae;
+      }
+      .el .tile {
+        position: relative;
+        overflow: hidden;
+      }
+      .el .tile > img {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 64%;
+        height: 64%;
+        object-fit: contain;
+      }
+      .el .tile.ink {
+        background: #121110;
+        border-color: #2a2826;
+      }
+      .el b {
+        color: var(--strong);
+        font-weight: 600;
+      }
+      .el > span:last-child {
+        font-size: 13px;
+        line-height: 20px;
+      }
+      .el .ticker-mini,
+      .el .ticker-mini span {
+        font-size: 46px;
+        line-height: 1;
+      }
+      .bubble {
+        padding: 12px 18px;
+        border-radius: 16px 16px 16px 4px;
+        background: #121110;
+        color: #fff9e6;
+        font-family: var(--font);
+        font-size: 13px;
+        transform: rotate(4deg);
+      }
+      .bubble strong {
+        display: block;
+        font-family: var(--font); letter-spacing: -0.03em;
+        font-size: 34px;
+        line-height: 1;
+        color: #f5a30b;
+      }
+      .ticker-mini {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 0 16px;
+        overflow: hidden;
+        white-space: nowrap;
+        font-family: var(--font); letter-spacing: -0.03em;
+        font-weight: 900;
+        font-size: 46px;
+        text-transform: uppercase;
+      }
+      @media (max-width: 760px) {
+        .sw-row,
+        .sw-row.four {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .els {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .spec-card .big {
+          font-size: 64px;
+        }
+      }
+      @media (max-width: 760px) {
+        .kw-band .inner,
+        .games,
+        .facts3 {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .kw-word {
+          font-size: 120px;
+        }
+        .kw-band img {
+          height: 240px;
+        }
+      }
+          /* Kwuo's own display face for headers and game cards */
+      .kw-word,
+      .cs h2,
+      .game .gname {
+        font-family: "Big Shoulders Display", Impact, sans-serif;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+      .kw-word { font-weight: 900; font-size: 230px; line-height: 0.8; }
+      .cs h2 { font-weight: 800; font-size: 40px; line-height: 40px; }
+      .game .gname { font-weight: 900; font-size: 48px; line-height: 0.9; }
+      @media (max-width: 760px) {
+        .kw-word { font-size: 120px; }
+        .cs h2 { font-size: 32px; line-height: 32px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wide cs-head">
+      <a class="back" href="../work.html"
+        ><span class="barw" aria-hidden="true">←</span>all work</a
+      >
+      <div class="right">
+        <span class="pbadge" role="img" aria-label="Case study">
+          <svg class="ring" viewBox="0 0 84 84" aria-hidden="true">
+            <defs>
+              <path
+                id="csRing"
+                d="M42,42 m-31,0 a31,31 0 1,1 62,0 a31,31 0 1,1 -62,0"
+              ></path>
+            </defs>
+            <text>
+              <textPath href="#csRing" textLength="192" lengthAdjust="spacing">
+                CASE STUDY · CASE STUDY ·
+              </textPath>
+            </text>
+          </svg>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 21H5V3h8l4 4v4"></path>
+            <path d="M13 3v4h4"></path>
+            <path d="M8 10h5M8 13.5h3"></path>
+            <circle cx="16.5" cy="16.5" r="3.2"></circle>
+            <path d="M18.8 18.8L21.5 21.5"></path>
+          </svg>
+        </span>
+        <button class="theme" type="button" aria-label="Switch to dark mode">
+          <svg
+            class="moon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"
+            ></path>
+            <path d="M17 3.5v2.4M15.8 4.7h2.4" stroke-width="1.4"></path>
+          </svg>
+          <svg
+            class="sun"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <g class="rays">
+              <path
+                d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"
+              ></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="kw-band appear" style="margin-top: 28px">
+      <div class="wide inner">
+        <div>
+          <h1 class="kw-word">Kwuo</h1>
+          <p>
+            Interactive ways to learn Igbo — games that get you saying the
+            words, and real tutors when you want more.
+          </p>
+        </div>
+        <img src="../assets/img/kwuo-owl.png" alt="Kwuo’s owl mascot" />
+      </div>
+    </div>
+
+    <main class="cs" style="padding-top: 72px">
+      <section
+        class="wide"
+        style="
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+          gap: 48px;
+        "
+      >
+        <aside class="side">
+          <div
+            class="mono"
+            style="
+              color: var(--muted);
+              text-transform: uppercase;
+              letter-spacing: 0.06em;
+            "
+          >
+            edtech · web · 2025
+          </div>
+          <div>
+            <div class="k">role</div>
+            <div class="v">Design &amp; full-stack</div>
+          </div>
+          <div>
+            <div class="k">platform</div>
+            <div class="v">Web</div>
+          </div>
+          <div>
+            <div class="k">stack</div>
+            <div class="tools" style="margin-top: 4px">
+              <span>TypeScript</span><span>React</span><span>Node.js</span
+              ><span>MongoDB</span><span>Tailwind</span><span>Zod</span
+              ><span>TanStack</span>
+            </div>
+          </div>
+          <div>
+            <div class="k">live</div>
+            <a
+              class="sitel"
+              href="https://kwuo.xyz"
+              target="_blank"
+              rel="noopener"
+              >Kwuo<span class="a" aria-hidden="true">↗</span></a
+            >
+          </div>
+        </aside>
+        <div>
+          <h2>Why it exists</h2>
+          <p>
+            Most language apps treat Igbo as an afterthought, if they include it
+            at all. Kwuo starts from the other end: short rounds that make you
+            recognise, say and use real words, so practice feels like play
+            rather than homework.
+          </p>
+          <p>
+            I designed and built the game flows, the interface, and the content
+            tools behind it.
+          </p>
+        </div>
+      </section>
+
+      <figure class="wide">
+        <div class="frame">
+          <img
+            src="../assets/img/kwuo.jpg"
+            alt="The Kwuo homepage"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="capline"><span>the homepage</span></figcaption>
+      </figure>
+
+      <section class="wide">
+        <h2>Four ways to play</h2>
+        <p style="max-width: 620px">
+          Each game trains a different part of speaking Igbo.
+          <!-- TODO: check these one-liners match how each game actually plays -->
+        </p>
+        <div class="games" style="margin-top: 18px">
+          <div class="game">
+            <span class="mono" style="opacity: 0.6">vocabulary</span
+            ><span class="gname">Igbo Words Matcher</span
+            ><span
+              >Match Igbo words to their meanings before the clock runs
+              out.</span
+            >
+          </div>
+          <div class="game">
+            <span class="mono" style="opacity: 0.6">party game</span
+            ><span class="gname">Igbo Heads Up</span
+            ><span
+              >Hold the word to your forehead while friends describe it in
+              Igbo.</span
+            >
+          </div>
+          <div class="game">
+            <span class="mono" style="opacity: 0.6">one word</span
+            ><span class="gname">Ofu Okwu</span
+            ><span>Choose one word that best describes an image.</span>
+          </div>
+          <div class="game">
+            <span class="mono" style="opacity: 0.6">riddles</span
+            ><span class="gname">Gwam Gwam Gwam</span
+            ><span
+              >The classic “tell me, tell me” riddle game, rebuilt for the
+              screen.</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="wide">
+        <h2>Beyond the games</h2>
+        <p>
+          When the games aren’t enough, learners can find Igbo tutors right
+          inside Kwuo.
+        </p>
+        <p>
+          Next is talking to other learners. These are planned,
+          <strong style="color: var(--strong); font-weight: 600"
+            >not built yet</strong
+          >:
+        </p>
+        <div class="soon">
+          <span>text chat <em>· planned</em></span
+          ><span>voice chat <em>· planned</em></span
+          ><span>mobile app <em>· planned</em></span>
+        </div>
+      </section>
+
+      <section class="wide">
+        <span class="kicker">typography</span>
+        <h2 style="margin-top: 8px">Loud headlines, calm reading</h2>
+        <p style="max-width: 620px">
+          Two font families do all the work. A tall, condensed display face
+          shouts the words you’re learning and a friendly grotesque handles
+          everything you read.
+        </p>
+        <div class="duo" style="margin-top: 18px">
+          <div class="spec-card">
+            <span class="mono" style="color: var(--muted)"
+              >display · Big Shoulders Display 700–900</span
+            >
+            <span class="big">Kwuo<br />Asụsụ</span>
+            <span class="glyphs">Aa Ọọ Ụụ Ịị Ṅṅ</span>
+            <span style="font-size: 13px"
+              >Headlines, game names and the word ticker are always
+              uppercase.</span
+            >
+          </div>
+          <div class="spec-card">
+            <span class="mono" style="color: var(--muted)"
+              >text · Instrument Sans 400–700</span
+            >
+            <span class="body"
+              >Each game trains a different part of speaking Igbo.</span
+            >
+            <span class="weights"
+              ><span style="font-weight: 400">Regular</span
+              ><span style="font-weight: 500">Medium</span
+              ><span style="font-weight: 600">Semibold</span
+              ><span style="font-weight: 700">Bold</span></span
+            >
+            <span style="font-size: 13px"
+              >Instructions, scores, tutor profiles and buttons, anything you
+              need to read quickly mid-game.</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="wide">
+        <span class="kicker">colour</span>
+        <h2 style="margin-top: 8px">Saffron, ink and cream</h2>
+        <p style="max-width: 620px">
+          The palette comes straight from the owl: saffron and ink, softened by
+          cream.
+        </p>
+        <div class="sw-row" style="margin-top: 18px">
+          <div class="sw">
+            <i style="background: #f5a30b"></i><b>Saffron</b
+            ><span>#F5A30B</span>
+          </div>
+          <div class="sw">
+            <i style="background: #c9780a"></i><b>Saffron deep</b
+            ><span>#C9780A</span>
+          </div>
+          <div class="sw">
+            <i style="background: #121110"></i><b>Ink</b><span>#121110</span>
+          </div>
+          <div class="sw">
+            <i style="background: #2a2826"></i><b>Charcoal</b
+            ><span>#2A2826</span>
+          </div>
+          <div class="sw">
+            <i style="background: #fff9e6"></i><b>Cream</b><span>#FFF9E6</span>
+          </div>
+          <div class="sw">
+            <i style="background: #fce2ae"></i><b>Belly</b><span>#FCE2AE</span>
+          </div>
+        </div>
+        <div class="note-q">
+          A rule from the stylesheet: plain saffron fails contrast as text on
+          white, so text uses <code>saffron deep</code> instead.
+        </div>
+      </section>
+
+      <section class="wide">
+        <h2>Fun facts from building it</h2>
+        <div class="facts3">
+          <div class="fact">
+            <span class="k"
+              ><span class="square" aria-hidden="true"></span>the name</span
+            >
+            <p>
+              “Kwuo” is Igbo for “speak”. The whole product is one long nudge to
+              say the words out loud.
+            </p>
+          </div>
+          <div class="fact">
+            <span class="k"
+              ><span class="square" aria-hidden="true"></span>the rebuild</span
+            >
+            <p>
+              Igbo Heads Up got a full rebuild — new state, new components,
+              while this very portfolio was being designed.
+            </p>
+          </div>
+          <div class="fact">
+            <span class="k"
+              ><span class="square" aria-hidden="true"></span>no deploys</span
+            >
+            <p>
+              Game content is edited from an admin I built, so new words go live
+              without touching code.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <a class="wide nextp" href="oddman.html">
+        <span style="display: flex; flex-direction: column; gap: 8px"
+          ><span class="kicker">next project</span
+          ><span class="name"
+            >Oddman<svg
+              class="arw"
+              width="26"
+              height="26"
+              viewBox="0 0 14 14"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2 7h10M8 3l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+              ></path></svg></span
+        ></span>
+        <span class="thumb"
+          ><img src="../assets/img/oddman.jpg" alt="" loading="lazy"
+        /></span>
+      </a>
+    </main>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oddman — case study — Emmanuel Ugwu</title>
+    <meta
+      name="description"
+      content="Oddman: storefront and admin for an independent streetwear label that sells in small pre-order drops."
+    />
+    <meta property="og:image" content="../assets/og-image.png" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script>
+      (function () {
+        var t;
+        try {
+          t = localStorage.getItem("theme");
+        } catch (e) {}
+        if (!t)
+          t =
+            window.matchMedia &&
+            matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <style>
+      .od-title {
+        font-size: 96px;
+        line-height: 88px;
+        font-weight: 700;
+        letter-spacing: -0.055em;
+      }
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .swatches div {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .swatches i {
+        display: block;
+        aspect-ratio: 1;
+        border: 1px solid var(--rule);
+      }
+      .rules3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid var(--strong);
+        margin: 24px 0 32px;
+      }
+      .rules3 > div {
+        padding: 16px 20px 0 0;
+      }
+      .rules3 b {
+        display: block;
+        margin: 6px 0 4px;
+        color: var(--strong);
+        font-weight: 600;
+      }
+      @media (max-width: 760px) {
+        .od-title {
+          font-size: 56px;
+          line-height: 56px;
+        }
+        .swatches {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        .rules3 {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wide cs-head">
+      <a class="back" href="../work.html"
+        ><span class="barw" aria-hidden="true">←</span>all work</a
+      >
+      <div class="right">
+        <span class="pbadge" role="img" aria-label="Case study">
+          <svg class="ring" viewBox="0 0 84 84" aria-hidden="true">
+            <defs>
+              <path
+                id="csRing"
+                d="M42,42 m-31,0 a31,31 0 1,1 62,0 a31,31 0 1,1 -62,0"
+              ></path>
+            </defs>
+            <text>
+              <textPath href="#csRing" textLength="192" lengthAdjust="spacing">
+                CASE STUDY · CASE STUDY ·
+              </textPath>
+            </text>
+          </svg>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 21H5V3h8l4 4v4"></path>
+            <path d="M13 3v4h4"></path>
+            <path d="M8 10h5M8 13.5h3"></path>
+            <circle cx="16.5" cy="16.5" r="3.2"></circle>
+            <path d="M18.8 18.8L21.5 21.5"></path>
+          </svg>
+        </span>
+        <button class="theme" type="button" aria-label="Switch to dark mode">
+          <svg
+            class="moon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"
+            ></path>
+            <path d="M17 3.5v2.4M15.8 4.7h2.4" stroke-width="1.4"></path>
+          </svg>
+          <svg
+            class="sun"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <g class="rays">
+              <path
+                d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"
+              ></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="cs">
+      <section
+        class="wide appear"
+        style="display: flex; flex-direction: column; gap: 28px"
+      >
+        <span
+          class="kicker"
+          style="text-transform: uppercase; letter-spacing: 0.06em"
+          >e-commerce · storefront + admin</span
+        >
+        <h1 class="od-title">Oddman</h1>
+        <div
+          class="meta"
+          style="grid-template-columns: repeat(3, minmax(0, 1fr))"
+        >
+          <div>
+            <span class="k">role</span
+            ><span class="v">Design &amp; full-stack</span>
+          </div>
+          <div>
+            <span class="k">timeline</span><span class="v">8 weeks</span>
+          </div>
+          <div>
+            <span class="k">live</span
+            ><a
+              class="sitel"
+              href="https://aga1nstallodds.netlify.app/shop"
+              target="_blank"
+              rel="noopener"
+              >Oddman<span class="a" aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div class="stack-row">
+          <span class="k">stack</span>
+          <div class="tools tools--plain">
+            <span>React</span><span>TypeScript</span><span>React Router </span
+            ><span>Vite</span><span>Tailwind CSS </span><span>Express</span
+            ><span>MongoDB</span><span>Paystack</span><span>Cloudinary</span
+            ><span>EmailJS</span>
+          </div>
+        </div>
+      </section>
+
+      <figure class="wide appear" style="--i: 2">
+        <div class="frame">
+          <img
+            src="../assets/img/oddman-shop.jpg"
+            alt="The Oddman shop: tilted tape navigation, category filters and products photographed on asphalt"
+          />
+        </div>
+        <figcaption class="capline"><span>the shop</span></figcaption>
+      </figure>
+
+      <section class="col">
+        <h2>The brief</h2>
+        <p>
+          Oddman is a clothing line where every piece is sold on pre-order and
+          shipped worldwide. That means the shop is selling clothes that don’t
+          exist yet, so it has to make people confident enough to pay for them
+          up front.
+        </p>
+        <p>The label needed four things from one product:</p>
+        <div class="li">
+          <span
+            ><strong>A shop with as much attitude as the clothes.</strong>
+            Lookbook photography, tilted “tape” navigation, and product pages
+            that read like a magazine spread rather than a catalogue.</span
+          >
+        </div>
+        <div class="li">
+          <span
+            ><strong>Fit confidence without a fitting room.</strong> A size
+            guide that sits right beside the size picker, shows only that
+            piece’s sizes, and switches between cm and inches.</span
+          >
+        </div>
+        <div class="li">
+          <span
+            ><strong>A checkout built for its customers.</strong> Naira payments
+            through Paystack, and real shipping prices for local and
+            international orders.</span
+          >
+        </div>
+        <div class="li">
+          <span
+            ><strong>An admin simple enough to run solo.</strong> Add a new
+            drop, track stock, and see which orders need attention first.</span
+          >
+        </div>
+        <p style="margin-top: 18px">
+          I designed and built all of it: the visual system both sides share,
+          the storefront and the admin.
+        </p>
+      </section>
+
+      <section class="wide">
+        <h2>The Design System</h2>
+
+        <div class="rules3">
+          <div>
+            <span class="kicker">rule</span><b>Lines instead of boxes</b
+            ><span
+              >The structure comes from 1px rules for the nav, forms, tables,
+              cart.</span
+            >
+          </div>
+          <div>
+            <span class="kicker">rule</span><b>Colour describes a state</b
+            ><span
+              >The Ink and paper themes do most of the work and signal red marks
+              what needs attention.</span
+            >
+          </div>
+          <div>
+            <span class="kicker">rule</span><b>Two fonts</b
+            ><span
+              >A sans font for anything you read; JetBrains Mono for anything
+              you compare — SKUs, prices, dates, sizes.</span
+            >
+          </div>
+        </div>
+        <div class="swatches">
+          <div>
+            <i style="background: #121212"></i
+            ><span class="mono" style="color: var(--strong)">ink</span
+            ><span class="mono" style="color: var(--muted)">#121212</span>
+          </div>
+          <div>
+            <i style="background: #f7f7f5"></i
+            ><span class="mono" style="color: var(--strong)">paper</span
+            ><span class="mono" style="color: var(--muted)">#F7F7F5</span>
+          </div>
+          <div>
+            <i style="background: #d4d4cf"></i
+            ><span class="mono" style="color: var(--strong)">rule</span
+            ><span class="mono" style="color: var(--muted)">#D4D4CF</span>
+          </div>
+          <div>
+            <i style="background: #4a4a45"></i
+            ><span class="mono" style="color: var(--strong)">muted</span
+            ><span class="mono" style="color: var(--muted)">#4A4A45</span>
+          </div>
+          <div>
+            <i style="background: #c62e22"></i
+            ><span class="mono" style="color: var(--strong)">signal</span
+            ><span class="mono" style="color: var(--muted)">#C62E22</span>
+          </div>
+          <div>
+            <i style="background: #1f7a45"></i
+            ><span class="mono" style="color: var(--strong)">ok</span
+            ><span class="mono" style="color: var(--muted)">#1F7A45</span>
+          </div>
+          <div>
+            <i style="background: #2f5bea"></i
+            ><span class="mono" style="color: var(--strong)">info</span
+            ><span class="mono" style="color: var(--muted)">#2F5BEA</span>
+          </div>
+          <div>
+            <i style="background: #e0a526"></i
+            ><span class="mono" style="color: var(--strong)">warn</span
+            ><span class="mono" style="color: var(--muted)">#E0A526</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="wide">
+        <h2>A product page that reads like a lookbook</h2>
+        <div
+          class="duo"
+          style="grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr)"
+        >
+          <figure>
+            <div class="frame">
+              <img
+                src="../assets/img/oddman-product.jpg"
+                alt="Product page with the size guide open and size L highlighted"
+                loading="lazy"
+              />
+            </div>
+            <figcaption class="capline">
+              <span>the product page</span>
+            </figcaption>
+          </figure>
+          <div>
+            <p>Photos scroll sideways while the purchase panel stays put.</p>
+            <div class="li">
+              <span
+                >The size guide shows the product’s sizes in cm and
+                inches.</span
+              >
+            </div>
+            <div class="li">
+              <span>Sold-out pieces stay visible but dimmed.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wide">
+        <h2>An admin built around what needs doing next</h2>
+        <figure style="margin-bottom: 24px">
+          <div class="frame">
+            <img
+              src="../assets/img/oddman-admin-inventory.jpg"
+              alt="Admin inventory: product table with monospaced SKUs and prices, status chips, colour swatches and sizes"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="capline"><span>the admin</span></figcaption>
+        </figure>
+        <div class="duo">
+          <div>
+            <span class="kicker">orders</span>
+            <p style="margin-top: 6px">
+              Sorted by what needs action, filtered by status, with confirm,
+              deliver and cancel in one place.
+            </p>
+          </div>
+          <div>
+            <span class="kicker">products</span>
+            <p style="margin-top: 6px">
+              The add and edit function in four clear sections — basics, media,
+              variants, description.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="col">
+        <h2>Outcome</h2>
+        <!-- TODO: replace with what changed for the label (drops sold through, time saved, etc.) -->
+
+        <div class="trio" style="margin-top: 18px">
+          <div class="stat"><b>3</b><span>apps, one design system</span></div>
+          <div class="stat"><b>1</b><span>designer-engineer: me</span></div>
+          <div class="stat"><b>100+</b><span>orders</span></div>
+        </div>
+        <div class="fact" style="margin-top: 32px">
+          <span class="k"
+            ><span class="square" aria-hidden="true"></span>fun fact</span
+          >
+          <p>
+            Oddman’s logo is a flaming 8-ball, and the codebase is called
+            “against all odds”. You’ll find the ball hiding in the corner of its
+            cover on my homepage.
+          </p>
+        </div>
+      </section>
+
+      <a class="wide nextp" href="180-autos.html">
+        <span style="display: flex; flex-direction: column; gap: 8px"
+          ><span class="kicker">next project</span
+          ><span class="name"
+            >180 Autos<svg
+              class="arw"
+              width="26"
+              height="26"
+              viewBox="0 0 14 14"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2 7h10M8 3l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+              ></path></svg></span
+        ></span>
+        <span class="thumb"
+          ><img src="../assets/img/180-autos.jpg" alt="" loading="lazy"
+        /></span>
+      </a>
+    </main>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

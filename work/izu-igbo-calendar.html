@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Izu Igbo Calendar — case study — Emmanuel Ugwu</title>
+    <meta
+      name="description"
+      content="Izu Igbo Calendar: the Igbo four-day market week mapped onto 120 years of dates, on the web and Android."
+    />
+    <meta property="og:image" content="../assets/og-image.png" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script>
+      (function () {
+        var t;
+        try {
+          t = localStorage.getItem("theme");
+        } catch (e) {}
+        if (!t)
+          t =
+            window.matchMedia &&
+            matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <style>
+      :root {
+        --iz: #5b2a9a;
+      }
+      html[data-theme="dark"] {
+        --iz: #b38cf0;
+      }
+      .iz-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        align-items: center;
+        gap: 40px;
+      }
+      .iz-hero h1 {
+        font-size: 52px;
+        line-height: 54px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--strong);
+      }
+      .iz-logo {
+        aspect-ratio: 1;
+        border-radius: 28px;
+        background: #f6f3ff;
+        display: grid;
+        place-items: center;
+      }
+      .iz-logo svg {
+        width: 88%;
+        height: 88%;
+      }
+      .week {
+        display: flex;
+        flex-direction: column;
+      }
+      .day {
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 32px;
+        padding: 40px 0;
+        border-top: 1px solid var(--strong);
+      }
+      .day:last-child {
+        border-bottom: 1px solid var(--strong);
+      }
+      .day .dn {
+        position: sticky;
+        top: 24px;
+        align-self: start;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .day .dn b {
+        font-size: 40px;
+        line-height: 40px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--iz);
+      }
+      .day .dn span {
+        font-family: var(--mono);
+        font-size: 11.5px;
+        color: var(--muted);
+      }
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 6px 0 16px;
+      }
+      .pills span {
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--iz) 12%, transparent);
+        color: var(--iz);
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .market {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin: 18px 0;
+      }
+      .market span {
+        padding: 14px 0;
+        text-align: center;
+        border-radius: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        background: color-mix(in srgb, var(--iz) 10%, transparent);
+        color: var(--iz);
+      }
+      .market span.on {
+        background: var(--iz);
+        color: #fff;
+      }
+      @media (max-width: 760px) {
+        .iz-hero,
+        .day {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .iz-hero h1 {
+          font-size: 34px;
+          line-height: 38px;
+        }
+        .day .dn {
+          position: static;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wide cs-head">
+      <a class="back" href="../work.html"
+        ><span class="barw" aria-hidden="true">←</span>all work</a
+      >
+      <div class="right">
+        <span class="pbadge" role="img" aria-label="Case study">
+          <svg class="ring" viewBox="0 0 84 84" aria-hidden="true">
+            <defs>
+              <path
+                id="csRing"
+                d="M42,42 m-31,0 a31,31 0 1,1 62,0 a31,31 0 1,1 -62,0"
+              ></path>
+            </defs>
+            <text>
+              <textPath href="#csRing" textLength="192" lengthAdjust="spacing">
+                CASE STUDY · CASE STUDY ·
+              </textPath>
+            </text>
+          </svg>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 21H5V3h8l4 4v4"></path>
+            <path d="M13 3v4h4"></path>
+            <path d="M8 10h5M8 13.5h3"></path>
+            <circle cx="16.5" cy="16.5" r="3.2"></circle>
+            <path d="M18.8 18.8L21.5 21.5"></path>
+          </svg>
+        </span>
+        <button class="theme" type="button" aria-label="Switch to dark mode">
+          <svg
+            class="moon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"
+            ></path>
+            <path d="M17 3.5v2.4M15.8 4.7h2.4" stroke-width="1.4"></path>
+          </svg>
+          <svg
+            class="sun"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <g class="rays">
+              <path
+                d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"
+              ></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="cs">
+      <section class="wide iz-hero appear">
+        <div style="display: flex; flex-direction: column; gap: 18px">
+          <span
+            class="kicker"
+            style="text-transform: uppercase; letter-spacing: 0.06em"
+            >culture · web + android · 2026</span
+          >
+          <h1>Izu Igbo Calendar</h1>
+          <p
+            style="
+              font-size: 18px;
+              line-height: 28px;
+              color: var(--strong);
+              margin: 0;
+            "
+          >
+            The Igbo four-day market week, mapped onto any date across a
+            120-year span.
+          </p>
+          <div style="display: flex; gap: 28px; flex-wrap: wrap">
+            <a
+              class="sitel"
+              href="https://izuigbocalendar.com"
+              target="_blank"
+              rel="noopener"
+              >Izu Igbo Calendar<span class="a" aria-hidden="true">↗</span></a
+            >
+            <a
+              class="sitel"
+              href="https://play.google.com/store/apps/details?id=com.calendar.izuigbo"
+              target="_blank"
+              rel="noopener"
+              >Google Play<span class="a" aria-hidden="true">↗</span></a
+            >
+          </div>
+          <div class="stack-row">
+            <span class="k">stack</span>
+            <div class="tools tools--plain">
+              <span>TypeScript</span><span>React</span><span>React Native</span
+              ><span>Expo</span><span>Node.js</span><span>MongoDB</span>
+            </div>
+          </div>
+        </div>
+        <div class="iz-logo orbit-host" aria-hidden="true">
+          <svg class="orbit" viewBox="0 0 512 512">
+            <g fill="none" stroke="#5B2A9A">
+              <circle cx="256" cy="256" r="190" stroke-width="2"></circle>
+              <circle
+                cx="256"
+                cy="256"
+                r="156"
+                stroke-width="3"
+                stroke-dasharray="0.5 8"
+                stroke-linecap="round"
+              ></circle>
+              <circle cx="256" cy="256" r="122" stroke-width="2"></circle>
+            </g>
+            <path
+              class="rays"
+              stroke="#5B2A9A"
+              stroke-width="2"
+              stroke-linecap="round"
+              fill="none"
+              d="M292.0 256.0L356.0 256.0M290.8 265.3L323.6 274.1M287.2 274.0L342.6 306.0M281.5 281.5L305.5 305.5M274.0 287.2L306.0 342.6M265.3 290.8L274.1 323.6M256.0 292.0L256.0 356.0M246.7 290.8L237.9 323.6M238.0 287.2L206.0 342.6M230.5 281.5L206.5 305.5M224.8 274.0L169.4 306.0M221.2 265.3L188.4 274.1M220.0 256.0L156.0 256.0M221.2 246.7L188.4 237.9M224.8 238.0L169.4 206.0M230.5 230.5L206.5 206.5M238.0 224.8L206.0 169.4M246.7 221.2L237.9 188.4M256.0 220.0L256.0 156.0M265.3 221.2L274.1 188.4M274.0 224.8L306.0 169.4M281.5 230.5L305.5 206.5M287.2 238.0L342.6 206.0M290.8 246.7L323.6 237.9"
+            ></path>
+            <circle
+              class="sun"
+              cx="256"
+              cy="256"
+              r="26"
+              fill="#5B2A9A"
+            ></circle>
+            <g class="o1" fill="#5B2A9A">
+              <circle cx="390" cy="122" r="14"></circle>
+              <circle cx="66" cy="256" r="7.5"></circle>
+              <circle cx="446" cy="258" r="7.5"></circle>
+            </g>
+            <g class="o2" fill="#5B2A9A">
+              <circle cx="157" cy="134" r="5.5"></circle>
+              <circle cx="256" cy="412" r="5.5"></circle>
+            </g>
+            <g class="o3" fill="#5B2A9A">
+              <circle cx="350" cy="178" r="5.5"></circle>
+              <circle cx="169" cy="342" r="12"></circle>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <section class="wide week">
+        <div class="day">
+          <div class="dn"><span>the idea</span></div>
+          <div>
+            <h2>Traditional igbo week</h2>
+            <p>
+              The traditional Igbo week has four market days — Eke, Orie, Afọ
+              and Nkwọ, and they still shape when markets meet, when ceremonies
+              happen, and which day people say they were born on.
+            </p>
+            <div class="market" aria-hidden="true">
+              <span>EKE</span><span class="on">ORIE</span><span>AFỌ</span
+              ><span>NKWỌ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="dn"><span>the web app</span></div>
+          <div>
+            <h2>App features</h2>
+            <p>
+              Shows today’s date, the day of the week, the market day and the
+              moon phase side by side. Month and year views let you plan ahead.
+            </p>
+            <div class="pills">
+              <span>market day</span><span>moon phase</span
+              ><span>month &amp; year views</span
+              ><span>birthday calculator</span>
+            </div>
+            <figure>
+              <div class="frame">
+                <img
+                  src="../assets/img/izu-web.jpg"
+                  alt="Izu Igbo Calendar on the web: date, day of week, market day Orie and moon phase above a month calendar"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption class="capline"><span>the web app</span></figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="dn"><span>the android app</span></div>
+          <div>
+            <h2>In your pocket</h2>
+            <p>
+              The Android app brings the same calendar to your phone to track
+              market days and find your Igbo birthday anywhere. It’s built with
+              React Native and Expo, and it’s live on Google Play.
+            </p>
+            <figure>
+              <div class="frame">
+                <img
+                  src="../assets/img/izu-play.jpg"
+                  alt="The Izu Igbo Calendar Android app"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption class="capline">
+                <span>the android app</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="dn"><span>fun facts</span></div>
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <div class="fact">
+              <span class="k"
+                ><span class="square" aria-hidden="true"></span>the birthday
+                question</span
+              >
+              <p>
+                The birthday calculator answers a question a lot of people ask
+                their parents: which market day was I born on?
+              </p>
+            </div>
+            <div class="fact">
+              <span class="k"
+                ><span class="square" aria-hidden="true"></span>the
+                keyboard</span
+              >
+              <p>
+                The iOS build was set up on a MacBook whose space bar types “]”.
+                A key-remap got me through it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <a class="wide nextp" href="oms-tracker.html">
+        <span style="display: flex; flex-direction: column; gap: 8px"
+          ><span class="kicker">next project</span
+          ><span class="name"
+            >OMS Tracker Tool<svg
+              class="arw"
+              width="26"
+              height="26"
+              viewBox="0 0 14 14"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2 7h10M8 3l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+              ></path></svg></span
+        ></span>
+        <span class="thumb"
+          ><img src="../assets/img/oms-tracker.jpg" alt="" loading="lazy"
+        /></span>
+      </a>
+    </main>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worldwise — case study — Emmanuel Ugwu</title>
+<meta name="description" content="Worldwise: a world map that tracks your footsteps into every city you can think of.">
+<meta property="og:image" content="../assets/og-image.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../css/styles.css">
+<script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})();</script>
+<style>
+  .postcard { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); background: #FBF8F1; color: #1d1d1b; border-radius: 6px; box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 30px 60px -36px rgba(0,0,0,.5); transform: rotate(-1.2deg); transition: transform .5s var(--ease); }
+  .postcard:hover { transform: rotate(0); }
+  .postcard .pic { padding: 14px; }
+  .postcard .pic img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
+  .postcard .back-side { position: relative; padding: 28px 28px 28px 32px; border-left: 1px solid rgba(0,0,0,.12); display: flex; flex-direction: column; gap: 14px; }
+  .stamp { position: absolute; top: 20px; right: 20px; width: 64px; height: 76px; display: grid; place-items: center; background: #A61B1B; color: #FBF8F1; font-family: var(--mono); font-size: 10px; text-align: center; line-height: 13px;
+    -webkit-mask: radial-gradient(circle 4px at 4px 4px, #0000 98%, #000) -4px -4px / 9.5px 9.5px; mask: radial-gradient(circle 4px at 4px 4px, #0000 98%, #000) -4px -4px / 9.5px 9.5px; }
+  .postcard h1 { font-size: 40px; line-height: 42px; font-weight: 700; letter-spacing: -0.03em; color: #1d1d1b; margin-right: 80px; }
+  .postcard p { color: #3a3a37; margin: 0; }
+  .postcard .lines { margin-top: auto; display: flex; flex-direction: column; gap: 10px; font-family: var(--mono); font-size: 12px; color: #1d1d1b; }
+  .postcard .lines span { padding-bottom: 6px; border-bottom: 1px solid rgba(0,0,0,.25); }
+  @media (max-width: 760px) { .postcard { grid-template-columns: minmax(0, 1fr); transform: none; } .postcard .back-side { border-left: 0; border-top: 1px solid rgba(0,0,0,.12); } }
+</style>
+</head>
+<body>
+
+<header class="wide cs-head">
+  <a class="back" href="../work.html"><span class="barw" aria-hidden="true">←</span>all work</a>
+  <div class="right">
+    <span class="pbadge" role="img" aria-label="Case study">
+      <svg class="ring" viewBox="0 0 84 84" aria-hidden="true"><defs><path id="csRing" d="M42,42 m-31,0 a31,31 0 1,1 62,0 a31,31 0 1,1 -62,0"></path></defs><text><textPath href="#csRing" textLength="192" lengthAdjust="spacing">CASE STUDY · CASE STUDY · </textPath></text></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21H5V3h8l4 4v4"></path><path d="M13 3v4h4"></path><path d="M8 10h5M8 13.5h3"></path><circle cx="16.5" cy="16.5" r="3.2"></circle><path d="M18.8 18.8L21.5 21.5"></path></svg>
+    </span>
+    <button class="theme" type="button" aria-label="Switch to dark mode">
+      <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"></path><path d="M17 3.5v2.4M15.8 4.7h2.4" stroke-width="1.4"></path></svg>
+      <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><g class="rays"><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></g></svg>
+    </button>
+  </div>
+</header>
+
+<main class="cs">
+
+  <section class="wide appear">
+    <div class="postcard">
+      <div class="pic"><img src="../assets/img/worldwise.jpg" alt="The Worldwise map with visited cities pinned"></div>
+      <div class="back-side">
+        <span class="stamp" aria-hidden="true">WORLD<br>WISE<br>✈</span>
+        <span class="mono" style="color:#6b6b66;text-transform:uppercase;letter-spacing:.06em;">maps · a postcard from</span>
+        <h1>Worldwise</h1>
+        <p>A world map that tracks your footsteps into every city you can think of. Click a spot, log the trip, and watch the map fill up.</p>
+        <div class="lines">
+          <span>stack: React · Vite · React Leaflet</span>
+          <span>role: design &amp; build</span>
+          <span>wish you were here →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="col">
+    <h2>A map that remembers</h2>
+    <p>Worldwise is the lightest build here, and the most personal: a travel log where the map is the interface. Pick a city, add when you went and a note, and it lands as a pin you can come back to.</p>
+    <p style="margin-top:14px"><a class="sitel" href="https://wurldwise.netlify.app/" target="_blank" rel="noopener">Worldwise<span class="a" aria-hidden="true">↗</span></a></p>
+  </section>
+
+  <a class="wide nextp" href="kwuo.html">
+    <span style="display:flex;flex-direction:column;gap:8px"><span class="kicker">next project</span><span class="name">Kwuo<svg class="arw" width="26" height="26" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"></path></svg></span></span>
+    <span class="thumb"><img src="../assets/img/kwuo.jpg" alt="" loading="lazy"></span>
+  </a>
+</main>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
