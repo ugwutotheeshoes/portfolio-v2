@@ -33,6 +33,7 @@ Deploy by uploading the folder as-is to any static host (Netlify, Vercel, Cloudf
 - **Hide a project:** set `hidden: true` on it in `js/data.js` (Faber Reach is hidden for now), and point the previous case study's “next project” link past it.
 - **Add an article / tool / job:** edit `ARTICLES`, `STACK` or `JOBS` in `js/data.js`.
 - **Email / GitHub / LinkedIn / résumé:** `SITE` in `js/data.js`. Résumé file goes at `assets/resume.pdf`.
+- **SEO files:** `robots.txt`, `sitemap.xml` (add new case studies there) and `404.html` (Netlify serves it for missing pages; uses root-relative paths).
 - **Re-render the OG image:** `./og/render.sh`.
 - **Social-preview tags:** `python3 og/meta.py` rewrites the Open Graph/Twitter block on every page. Once the site has a domain, run `python3 og/meta.py https://your-domain` so previews use absolute URLs.
 

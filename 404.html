@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — Emmanuel Ugwu</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/css/styles.css">
+<script>
+  (function () {
+    var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+</head>
+<body>
+
+<header class="nav nav--wide">
+  <a class="brand" href="/"><img src="/assets/img/avatar.jpg" alt=""><span>Emmanuel Ugwu</span></a>
+  <nav class="nav-links" aria-label="Main">
+    <a class="navl" href="/work.html">work</a>
+    <a class="navl" data-github href="#" target="_blank" rel="noopener">github</a>
+    <a class="navl" data-linkedin href="#" target="_blank" rel="noopener">linkedin</a>
+    <a class="navl" data-email href="#">email</a>
+    <a class="navl" data-resume="/" href="#">resume</a>
+    <button class="theme" type="button" aria-label="Switch to dark mode">
+      <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"></path><path d="M17 3.5v2.4M15.8 4.7h2.4" stroke-width="1.4"></path></svg>
+      <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><g class="rays"><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></g></svg>
+    </button>
+  </nav>
+</header>
+
+<main class="work" style="width:880px;max-width:calc(100% - 48px);margin-inline:auto;min-height:60vh;display:flex;flex-direction:column;justify-content:center">
+  <section class="work-head appear" style="--i:0">
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:560px">
+      <span class="mono" style="color:var(--accent)">404</span>
+      <h1>This page doesn’t exist.</h1>
+      <p style="margin:0">The link might be old, or the page moved. Everything I’ve built is still on the work page.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <a class="tk tk--outline" href="/work.html"><span class="t">all work</span><span class="i" aria-hidden="true"><svg class="arw" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6"></path></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot" style="padding-top:48px">
+    <a class="back" href="/"><span class="barw" aria-hidden="true">←</span>back home</a>
+    <span>© 2026 Emmanuel Ugwu</span>
+  </footer>
+</main>
+
+<script src="/js/data.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

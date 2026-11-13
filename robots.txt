@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /work/faber-reach.html
+
+Sitemap: https://ugwu.netlify.app/sitemap.xml
