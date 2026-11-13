@@ -31,6 +31,7 @@ Deploy by uploading the folder as-is to any static host (Netlify, Vercel, Cloudf
 
 - **Add a project:** add an entry to `PROJECTS` in `js/data.js` (set `featured: true` to show it on the homepage), then create `work/<slug>.html` — copy any existing case study and restructure it.
 - **Hide a project:** set `hidden: true` on it in `js/data.js` (Faber Reach is hidden for now), and point the previous case study's “next project” link past it.
+- **Writing section:** commented out in `index.html` (articles kept in `js/data.js`); uncomment the block to bring it back.
 - **Add an article / tool / job:** edit `ARTICLES`, `STACK` or `JOBS` in `js/data.js`.
 - **Email / GitHub / LinkedIn / résumé:** `SITE` in `js/data.js`. Résumé file goes at `assets/resume.pdf`.
 - **SEO files:** `robots.txt`, `sitemap.xml` (add new case studies there) and `404.html` (Netlify serves it for missing pages; uses root-relative paths).
