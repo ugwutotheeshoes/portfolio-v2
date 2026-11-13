@@ -49,7 +49,6 @@ Deploy by uploading the folder as-is to any static host (Netlify, Vercel, Cloudf
 
 ## Still to fill in
 
-- Article URLs and the "all articles" link in `js/data.js`
 - `[timeline]` and the outcome paragraph in `work/oddman.html`
 - Faber Reach lab notes in `work/faber-reach.html`
 - Run `python3 og/meta.py https://<domain>` once there's a domain

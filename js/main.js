@@ -132,10 +132,10 @@
   var arts = $('[data-articles]');
   if (arts && window.ARTICLES) {
     arts.innerHTML = ARTICLES.map(function (a) {
-      return '<a class="art" href="' + esc(a.url) + '"><span>' + esc(a.title) + '</span><span class="go" aria-hidden="true">↗</span></a>';
+      return '<a class="art" href="' + esc(a.url) + '" target="_blank" rel="noopener"><span>' + esc(a.title) + '</span><span class="go" aria-hidden="true">↗</span></a>';
     }).join('');
     var all = $('[data-all-articles]');
-    if (all && window.ALL_ARTICLES_URL) all.href = ALL_ARTICLES_URL;
+    if (all && window.ALL_ARTICLES_URL) { all.href = ALL_ARTICLES_URL; all.target = '_blank'; all.rel = 'noopener'; }
   }
 
   /* ---- work page ----------------------------------------------------- */

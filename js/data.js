@@ -89,11 +89,11 @@ window.STACK = [
   ['tooling', 'Git · Docker']
 ];
 
-/* TODO: replace each `url: '#'` with the article's real link. */
 window.ARTICLES = [
-  { title: 'Exploring the Best UI Component Libraries for React Native Apps', url: '#' },
-  { title: 'A/B Test Visual Assets With DAM for Data-Driven Campaigns', url: '#' },
-  { title: 'How to Test Product Image Variations for Higher Conversions', url: '#' },
-  { title: 'Customize Midjourney Images for Your E-commerce Website', url: '#' }
+  { title: 'Exploring the Best UI Component Libraries for React Native Apps', url: 'https://dev.to/ugwutotheeshoes/exploring-the-best-ui-component-libraries-for-react-native-apps-p5c' },
+  { title: 'Building an AI Image Manager With DALL-E and Cloudinary', url: 'https://cloudinary.com/blog/building-ai-image-manager-dall-e-cloudinary' },
+  { title: 'A/B Test Visual Assets With DAM for Data-Driven Campaigns', url: 'https://cloudinary.com/blog/a-b-test-visual-assets-dam-data-driven-campaigns' },
+  { title: 'How to Test Product Image Variations for Higher Conversions', url: 'https://cloudinary.com/blog/test-product-image-variations-higher-conversions' },
+  { title: 'Customize Midjourney Images for Your E-commerce Website', url: 'https://cloudinary.com/blog/customize-midjourney-images-e-commerce' }
 ];
-window.ALL_ARTICLES_URL = '#'; // TODO: your Hackmamba / dev.to author page
+window.ALL_ARTICLES_URL = 'https://dev.to/ugwutotheeshoes';
