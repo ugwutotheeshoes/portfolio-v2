@@ -71,7 +71,7 @@ window.JOBS = [
     note: 'Sole frontend engineer. Replaced a single-login workflow with a multi-admin dashboard for 50+ staff, and built the tracker tool 100+ members use.' },
   { role: 'Mobile Development Engineer Intern', org: 'Spacemates', loc: 'Oslo, NO', when: '2024',
     note: '7+ core screens — search, listings, booking, profiles — and geolocation-based discovery with nearby listings on a map, in a 3-person team.' },
-  { role: 'Frontend Engineer', org: 'Hackmamba', loc: 'Delaware, US', when: '2021 — 2025',
+  { role: 'Frontend Engineer & Technical Writer', org: 'Hackmamba', loc: 'Delaware, US', when: '2021 — 2025',
     note: '50+ product demo apps in React, Next.js and Nuxt, built for tutorials followed by 10,000+ developers.' },
   { role: 'Documentation Contributor (open source)', org: 'Ansible by Red Hat', loc: 'North Carolina, US', when: '2022 — now',
     note: 'Volunteer on the official Ansible docs: clearer, more accurate pages, plus reviewing pull requests and fixing issues.' }
