@@ -7,6 +7,7 @@ window.SITE = {
   name: 'Emmanuel Ugwu',
   email: 'ugwuec14@gmail.com',
   github: 'https://github.com/ugwutotheeshoes',
+  linkedin: 'https://www.linkedin.com/in/emmanuel-chiemezie-ugwu/',
   // TODO: drop your résumé PDF at assets/resume.pdf (or change this path).
   resume: 'assets/resume.pdf'
 };
@@ -61,27 +62,29 @@ window.PROJECTS = [
     slug: 'worldwise', name: 'Worldwise', year: '', kind: 'maps', featured: false,
     img: 'assets/img/worldwise.jpg', live: 'https://wurldwise.netlify.app/',
     desc: 'A world map that tracks your footsteps into every city you can think of.',
-    stack: ['React', 'Vite', 'React Leaflet']
+    stack: ['React', 'Vite', 'React Leaflet', 'OpenWeather API']
   }
 ];
 
 window.JOBS = [
   { role: 'Full-Stack Developer', org: 'OMS Labs', loc: 'Virginia, US', when: '2025 — now',
     note: 'Sole frontend engineer. Replaced a single-login workflow with a multi-admin dashboard for 50+ staff, and built the tracker tool 100+ members use.' },
-  { role: 'Mobile Engineering Intern', org: 'Spacemates', loc: 'Oslo, NO', when: '2024',
-    note: '7+ core screens — search, listings, booking, profiles — and geolocation-based discovery in a 3-person team.' },
+  { role: 'Mobile Development Engineer Intern', org: 'Spacemates', loc: 'Oslo, NO', when: '2024',
+    note: '7+ core screens — search, listings, booking, profiles — and geolocation-based discovery with nearby listings on a map, in a 3-person team.' },
   { role: 'Frontend Engineer & Technical Writer', org: 'Hackmamba', loc: 'Delaware, US', when: '2021 — 2025',
-    note: '50+ product demo apps in React, Next.js and Nuxt, and articles read by 10,000+ developers on dev.to alone.' }
+    note: '50+ product demo apps in React, Next.js and Nuxt, and articles read by 10,000+ developers on dev.to alone.' },
+  { role: 'Documentation Contributor (open source)', org: 'Ansible by Red Hat', loc: 'North Carolina, US', when: '2022 — now',
+    note: 'Volunteer on the official Ansible docs: clearer, more accurate pages, plus reviewing pull requests and fixing issues.' }
 ];
 
 window.STACK = [
   ['languages', 'TypeScript · JavaScript · Go'],
-  ['frontend', 'React · Next.js · Tailwind CSS'],
+  ['frontend', 'React · Next.js · Nuxt · Tailwind CSS · Styled Components'],
   ['state', 'TanStack Query · Zustand · Zod'],
   ['animation', 'GSAP · Motion'],
   ['mobile', 'React Native · Expo'],
   ['backend', 'Node.js · Express · Netlify Functions · JWT'],
-  ['data', 'MongoDB · Supabase · Prisma'],
+  ['data', 'MongoDB · SQL · Supabase · Prisma'],
   ['services', 'Cloudflare · Paystack · Stripe · Cloudinary · Auth0'],
   ['tooling', 'Git · Docker']
 ];

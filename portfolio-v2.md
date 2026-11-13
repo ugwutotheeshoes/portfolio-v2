@@ -32,8 +32,9 @@ Deploy by uploading the folder as-is to any static host (Netlify, Vercel, Cloudf
 - **Add a project:** add an entry to `PROJECTS` in `js/data.js` (set `featured: true` to show it on the homepage), then create `work/<slug>.html` — copy any existing case study and restructure it.
 - **Hide a project:** set `hidden: true` on it in `js/data.js` (Faber Reach is hidden for now), and point the previous case study's “next project” link past it.
 - **Add an article / tool / job:** edit `ARTICLES`, `STACK` or `JOBS` in `js/data.js`.
-- **Email / GitHub / résumé:** `SITE` in `js/data.js`. Résumé file goes at `assets/resume.pdf`.
+- **Email / GitHub / LinkedIn / résumé:** `SITE` in `js/data.js`. Résumé file goes at `assets/resume.pdf`.
 - **Re-render the OG image:** `./og/render.sh`.
+- **Social-preview tags:** `python3 og/meta.py` rewrites the Open Graph/Twitter block on every page. Once the site has a domain, run `python3 og/meta.py https://your-domain` so previews use absolute URLs.
 
 ## Conventions
 
@@ -51,4 +52,4 @@ Deploy by uploading the folder as-is to any static host (Netlify, Vercel, Cloudf
 - Article URLs and the "all articles" link in `js/data.js`
 - `[timeline]` and the outcome paragraph in `work/oddman.html`
 - Faber Reach lab notes in `work/faber-reach.html`
-- Absolute `og:image` URLs once there's a domain
+- Run `python3 og/meta.py https://<domain>` once there's a domain

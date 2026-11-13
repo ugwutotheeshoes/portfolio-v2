@@ -37,6 +37,7 @@
   if (window.SITE) {
     document.querySelectorAll('[data-email]').forEach(function (a) { a.href = 'mailto:' + SITE.email; });
     document.querySelectorAll('[data-github]').forEach(function (a) { a.href = SITE.github; });
+    document.querySelectorAll('[data-linkedin]').forEach(function (a) { a.href = SITE.linkedin; });
     document.querySelectorAll('[data-resume]').forEach(function (a) {
       a.href = (a.getAttribute('data-resume') || '') + SITE.resume;
       a.setAttribute('download', '');
