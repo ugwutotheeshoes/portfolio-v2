@@ -50,4 +50,4 @@ Deploy by uploading the folder as-is to any static host (Netlify, Vercel, Cloudf
 ## Still to fill in
 
 - Faber Reach lab notes in `work/faber-reach.html`
-- Run `python3 og/meta.py https://<domain>` once there's a domain
+- Live at https://ugwu.netlify.app (re-run `python3 og/meta.py https://ugwu.netlify.app` after adding pages or changing titles)
