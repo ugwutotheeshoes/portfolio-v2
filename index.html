@@ -1,98 +1,252 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Emmanuel Ugwu — full-stack engineer</title>
-<meta name="description" content="Emmanuel Ugwu is a full-stack engineer who builds products end to end — from the database to the last hover state.">
-<!-- social -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Emmanuel Ugwu">
-<meta property="og:title" content="Emmanuel Ugwu — full-stack engineer">
-<meta property="og:description" content="Emmanuel Ugwu is a full-stack engineer who builds products end to end — from the database to the last hover state.">
-<meta property="og:url" content="https://ugwu.netlify.app/">
-<meta property="og:image" content="https://ugwu.netlify.app/assets/og-image.png?v=4">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Emmanuel Ugwu — full-stack engineer">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Emmanuel Ugwu — full-stack engineer">
-<meta name="twitter:description" content="Emmanuel Ugwu is a full-stack engineer who builds products end to end — from the database to the last hover state.">
-<meta name="twitter:image" content="https://ugwu.netlify.app/assets/og-image.png?v=4">
-<meta name="theme-color" content="#ffffff">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="canonical" href="https://ugwu.netlify.app/">
-<!-- /social -->
-<link rel="icon" href="favicon.svg?v=6" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@900&family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="css/styles.css">
-<script>
-  (function () {
-    var t; try { t = localStorage.getItem('theme'); } catch (e) {}
-    if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', t);
-  })();
-</script>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emmanuel Ugwu — full-stack engineer</title>
+    <meta
+      name="description"
+      content="Emmanuel Ugwu is a full-stack engineer who builds products end to end — from the database to the last hover state."
+    />
+    <!-- social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Emmanuel Ugwu" />
+    <meta property="og:title" content="Emmanuel Ugwu — full-stack engineer" />
+    <meta
+      property="og:description"
+      content="Emmanuel Ugwu is a full-stack engineer who builds products end to end — from the database to the last hover state."
+    />
+    <meta property="og:url" content="https://ugwu.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://ugwu.netlify.app/assets/og-image.png?v=4"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Emmanuel Ugwu — full-stack engineer"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Emmanuel Ugwu — full-stack engineer" />
+    <meta
+      name="twitter:description"
+      content="Emmanuel Ugwu is a full-stack engineer who builds products end to end — from the database to the last hover state."
+    />
+    <meta
+      name="twitter:image"
+      content="https://ugwu.netlify.app/assets/og-image.png?v=4"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="canonical" href="https://ugwu.netlify.app/" />
+    <!-- /social -->
+    <link rel="icon" href="favicon.svg?v=6" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@900&family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      (function () {
+        var t;
+        try {
+          t = localStorage.getItem("theme");
+        } catch (e) {}
+        if (!t)
+          t =
+            window.matchMedia &&
+            matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><img src="assets/img/avatar.jpg" alt="" /><span>Emmanuel Ugwu</span></a
+      >
+      <nav class="nav-links" aria-label="Main">
+        <a class="navl" href="work.html">work</a>
+        <a class="navl" data-github href="#" target="_blank" rel="noopener"
+          >github</a
+        >
+        <a class="navl" data-linkedin href="#" target="_blank" rel="noopener"
+          >linkedin</a
+        >
+        <a class="navl" data-email href="#">email</a>
+        <a class="navl" data-resume href="#">resume</a>
+        <button class="theme" type="button" aria-label="Switch to dark mode">
+          <svg
+            class="moon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"
+            ></path>
+            <path d="M17 3.5v2.4M15.8 4.7h2.4" stroke-width="1.4"></path>
+          </svg>
+          <svg
+            class="sun"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <g class="rays">
+              <path
+                d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"
+              ></path>
+            </g>
+          </svg>
+        </button>
+      </nav>
+    </header>
 
-<header class="nav">
-  <a class="brand" href="index.html"><img src="assets/img/avatar.jpg" alt=""><span>Emmanuel Ugwu</span></a>
-  <nav class="nav-links" aria-label="Main">
-    <a class="navl" href="work.html">work</a>
-    <a class="navl" data-github href="#" target="_blank" rel="noopener">github</a>
-    <a class="navl" data-linkedin href="#" target="_blank" rel="noopener">linkedin</a>
-    <a class="navl" data-email href="#">email</a>
-    <a class="navl" data-resume href="#">resume</a>
-    <button class="theme" type="button" aria-label="Switch to dark mode">
-      <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"></path><path d="M17 3.5v2.4M15.8 4.7h2.4" stroke-width="1.4"></path></svg>
-      <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><g class="rays"><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></g></svg>
-    </button>
-  </nav>
-</header>
+    <main class="home">
+      <section class="col hero appear" style="--i: 0">
+        <p class="tag-line mono">
+          <span class="square" aria-hidden="true"></span>full-stack engineer
+        </p>
+        <h1 class="sr-only">Emmanuel Ugwu</h1>
+        <div class="bio">
+          <p>
+            I’m Emmanuel, a full-stack engineer. At
+            <a
+              class="ul"
+              href="https://omslabsprojects.com"
+              target="_blank"
+              rel="noopener"
+              >OMS Labs</a
+            >
+            I’m the sole frontend engineer, so I own the interface end to end,
+            from how it’s architected down to the APIs it talks to.
+          </p>
+          <p>
+            The best way to describe myself is a <em>“full-loop” builder</em>. I
+            like taking a product from the database to the last hover state. For
+            four years I wrote technical articles for
+            <a
+              class="ul"
+              href="https://hackmamba.io"
+              target="_blank"
+              rel="noopener"
+              >Hackmamba</a
+            >
+            and built the product demos behind them, reaching 10,000+
+            developers.
+          </p>
+        </div>
+        <div>
+          <a class="tk tk--invert" data-email href="#">
+            <span class="t">get in touch</span>
+            <span class="i" aria-hidden="true">
+              <svg
+                class="from"
+                width="13"
+                height="13"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <rect
+                  x="1.75"
+                  y="3.25"
+                  width="12.5"
+                  height="9.5"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                ></rect>
+                <path
+                  d="M2 4l6 4.5L14 4"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                ></path>
+              </svg>
+              <svg
+                class="to"
+                width="13"
+                height="13"
+                viewBox="0 0 14 14"
+                fill="none"
+              >
+                <path
+                  d="M4 10l6-6M5 4h5v5"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                ></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </section>
 
-<main class="home">
+      <section id="work" class="col appear" style="--i: 2">
+        <div class="section-head">
+          <h2 class="lbl">selected work</h2>
+          <a class="tk tk--outline" href="work.html"
+            ><span class="t">all work</span
+            ><span class="i" aria-hidden="true"
+              ><svg
+                class="arw"
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+              >
+                <path
+                  d="M2 7h10M8 3l4 4-4 4"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                ></path></svg></span
+          ></a>
+        </div>
+        <div class="shots" data-selected-work></div>
+        <a class="bar" href="work.html" style="margin-top: 28px"
+          ><span>see other works</span
+          ><svg
+            class="arw"
+            width="16"
+            height="16"
+            viewBox="0 0 14 14"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M2 7h10M8 3l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.6"
+            ></path></svg
+        ></a>
+      </section>
 
-  <section class="col hero appear" style="--i:0">
-    <p class="tag-line mono"><span class="square" aria-hidden="true"></span>full-stack engineer</p>
-    <h1 class="sr-only">Emmanuel Ugwu</h1>
-    <div class="bio">
-      <p>I’m Emmanuel, a full-stack engineer. At <a class="ul" href="https://omslabsprojects.com" target="_blank" rel="noopener">OMS Labs</a> I’m the sole frontend engineer, so I own the interface end to end, from how it’s architected down to the APIs it talks to.</p>
-      <p>The best way to describe myself is a <em>“full-loop” builder</em>. I like taking a product from the database to the last hover state. For four years I built some of the product demos behind <a class="ul" href="https://hackmamba.io" target="_blank" rel="noopener">Hackmamba</a>’s tutorials, 50+ apps followed by 10,000+ developers, and building for people learning taught me that if it isn’t simple to follow, it isn’t built well enough.</p>
-    </div>
-    <div>
-      <a class="tk tk--invert" data-email href="#">
-        <span class="t">get in touch</span>
-        <span class="i" aria-hidden="true">
-          <svg class="from" width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="1.75" y="3.25" width="12.5" height="9.5" stroke="currentColor" stroke-width="1.4"></rect><path d="M2 4l6 4.5L14 4" stroke="currentColor" stroke-width="1.4"></path></svg>
-          <svg class="to" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M4 10l6-6M5 4h5v5" stroke="currentColor" stroke-width="1.7"></path></svg>
-        </span>
-      </a>
-    </div>
-  </section>
+      <section id="experience" class="col appear" style="--i: 4">
+        <h2 class="lbl">experience</h2>
+        <div class="jobs" data-jobs></div>
+      </section>
 
-  <section id="work" class="col appear" style="--i:2">
-    <div class="section-head">
-      <h2 class="lbl">selected work</h2>
-      <a class="tk tk--outline" href="work.html"><span class="t">all work</span><span class="i" aria-hidden="true"><svg class="arw" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6"></path></svg></span></a>
-    </div>
-    <div class="shots" data-selected-work></div>
-    <a class="bar" href="work.html" style="margin-top:28px"><span>see other works</span><svg class="arw" width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6"></path></svg></a>
-  </section>
+      <section id="stack" class="col appear" style="--i: 5">
+        <h2 class="lbl">stack</h2>
+        <div class="srows" data-stack></div>
+      </section>
 
-  <section id="experience" class="col appear" style="--i:4">
-    <h2 class="lbl">experience</h2>
-    <div class="jobs" data-jobs></div>
-  </section>
-
-  <section id="stack" class="col appear" style="--i:5">
-    <h2 class="lbl">stack</h2>
-    <div class="srows" data-stack></div>
-  </section>
-
-  <!-- writing: hidden for now — uncomment to bring the articles back (links live in js/data.js)
+      <!-- writing: hidden for now — uncomment to bring the articles back (links live in js/data.js)
   <section id="writing" class="col appear" style="--i:6">
     <h2 class="lbl">writing</h2>
     <div data-articles></div>
@@ -100,13 +254,13 @@
   </section>
   -->
 
-  <footer class="col foot">
-    <span>© 2026 Emmanuel Ugwu</span>
-    <span class="mono" data-clock></span>
-  </footer>
-</main>
+      <footer class="col foot">
+        <span>© 2026 Emmanuel Ugwu</span>
+        <span class="mono" data-clock></span>
+      </footer>
+    </main>
 
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
-</body>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
