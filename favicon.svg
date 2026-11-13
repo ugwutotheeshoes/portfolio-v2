@@ -1,5 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <!-- ü from Redaction 100 Bold, as outlines (no font download needed) -->
-  <rect width="40" height="40" rx="9" fill="#0e0e0e"/>
-  <g transform="translate(8 34) scale(0.04 -0.04)" fill="#ffffff"><path d="M200 500V100H400V400H300V500H500V100H600V0H100V400H0V500ZM200 600V700H300V600ZM400 600V700H500V600Z"/></g>
+  <!-- Same cutout as the OG image: Bricolage Grotesque 800 ü, tilted -2.5°, on white halftone -->
+  <defs>
+    <pattern id="ht" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <circle cx="1.5" cy="1.5" r="0.75" fill="#9a9a9a"/>
+    </pattern>
+    <radialGradient id="fade" cx="0.15" cy="0.85" r="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="0.55" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="m"><rect width="40" height="40" fill="url(#fade)"/></mask>
+    <clipPath id="tile"><rect width="40" height="40" rx="9"/></clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="40" height="40" fill="#ffffff"/>
+    <rect width="40" height="40" fill="url(#ht)" mask="url(#m)" opacity="0.7"/>
+  </g>
+  <rect x="0.5" y="0.5" width="39" height="39" rx="8.5" fill="none" stroke="#000" stroke-opacity="0.12"/>
+  <g transform="rotate(-2.5 20 20) translate(8.6 34.4) scale(0.0414 -0.0414)" fill="#111110">
+    <path d="M200 -14Q114 -14 72.5 46.0Q31 106 31 230V528H193V232Q193 174 209.5 151.0Q226 128 257 128Q279 128 297.5 139.5Q316 151 330.0 174.5Q344 198 351.5 235.0Q359 272 359 324V528H521V238V0H383V206H376Q370 129 349.0 80.5Q328 32 291.0 9.0Q254 -14 200 -14Z"/>
+    <path d="M387 574Q348 574 326.5 589.0Q305 604 305 642Q305 680 326.5 695.5Q348 711 387 711Q428 711 449.5 695.5Q471 680 471 642Q471 604 449.5 589.0Q428 574 387 574Z"/>
+    <path d="M160 574Q121 574 99.0 589.0Q77 604 77 642Q77 680 99.0 695.5Q121 711 160 711Q200 711 222.0 695.5Q244 680 244 642Q244 604 222.0 589.0Q200 574 160 574Z"/>
+  </g>
 </svg>
