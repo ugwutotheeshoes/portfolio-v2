@@ -8,14 +8,16 @@
   html, body { margin: 0; }
   .og { position: relative; width: 1200px; height: 630px; overflow: hidden; background: #fff; color: #111110; font-family: "Bricolage Grotesque", sans-serif; }
   .og .ht { position: absolute; inset: 0; background: url(../assets/img/halftone.jpg) center / cover no-repeat; filter: grayscale(1) brightness(1.45) contrast(1.15); opacity: .5; }
-  .og .u { position: absolute; inset: 0; display: grid; place-items: center; padding-bottom: 50px; font-weight: 800; font-size: 500px; line-height: 1; letter-spacing: -0.04em; transform: rotate(-2.5deg); }
+  .og .u { position: absolute; inset: 0; display: grid; place-items: center; padding-bottom: 50px; font-weight: 800; line-height: 1; }
   .og p { position: absolute; right: 52px; bottom: 40px; margin: 0; font-size: 28px; line-height: 1; letter-spacing: -0.015em; white-space: nowrap; }
 </style>
 </head>
 <body>
 <div class="og">
   <div class="ht"></div>
-  <div class="u">ü</div>
+  <div class="u"><!-- the favicon's ü: Redaction 100 Bold, as outlines -->
+    <svg width="312" height="364" viewBox="0 0 600 700" aria-hidden="true"><g transform="translate(0 700) scale(1 -1)" fill="#111110"><path d="M200 500V100H400V400H300V500H500V100H600V0H100V400H0V500ZM200 600V700H300V600ZM400 600V700H500V600Z"/></g></svg>
+  </div>
   <p><span style="font-weight:800">Ugwu Emmanuel</span> <span style="font-weight:600">— full-stack engineer &amp; technical writer</span></p>
 </div>
 </body>
