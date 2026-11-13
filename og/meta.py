@@ -23,7 +23,7 @@ for path in ['index.html', 'work.html'] + sorted(os.path.relpath(p, ROOT) for p 
     desc = html.unescape(re.sub(r'\s+', ' ', re.search(r'<meta\s+name="description"\s+content="(.*?)"', s, re.S).group(1)))
     up = '../' if path.startswith('work/') else ''
     page_url = f'{BASE}/{"" if path == "index.html" else path}' if BASE else ''
-    img = (f'{BASE}/assets/og-image.png' if BASE else f'{up}assets/og-image.png') + '?v=2'
+    img = (f'{BASE}/assets/og-image.png' if BASE else f'{up}assets/og-image.png') + '?v=3'
     lines = [
         tag('property', 'og:type', 'website' if path == 'index.html' else 'article'),
         tag('property', 'og:site_name', SITE),

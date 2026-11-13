@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
   <!-- ü from Redaction 100 Bold, as outlines (no font download needed) -->
   <rect width="40" height="40" rx="9" fill="#0e0e0e"/>
-  <g transform="translate(8 34) scale(0.04 -0.04)" fill="#ffffff"><path d="M200 500V100H400V400H300V500H500V100H600V0H100V400H0V500ZM200 600V700H300V600ZM400 600V700H500V600Z"/></g>
+  <g transform="translate(8 34) scale(0.04 -0.04)" fill="#ffffff"><path d="M200 500V100H400V400H300V500H500V100H600V0H100V400H0V500ZM100 600V700H200V600ZM400 600V700H500V600Z"/></g>
 </svg>
